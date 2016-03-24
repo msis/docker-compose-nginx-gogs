@@ -17,7 +17,7 @@ services:
     depends_on:
       - git
     links:
-      - git:git
+      - git:gitserver
 
   git:
     image: gogs/gogs
