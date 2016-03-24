@@ -2,8 +2,8 @@ version: '2'
 
 services:
   web:
-    restart: always
     image: nginx
+    restart: always
     ports:
       - "8080:80"
       - "443:443"
@@ -12,8 +12,8 @@ services:
       - NGINX_PORT=80
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-    links:
-      - git:git
+    depends_on:
+      - git
 
   git:
     image: gogs/gogs
