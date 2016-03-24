@@ -5,7 +5,7 @@ services:
     image: nginx
     restart: always
     ports:
-      - "8080:80"
+      - "80:80"
       - "443:443"
     environment:
       - NGINX_HOST=127.30.27.65
@@ -19,5 +19,9 @@ services:
 
   git:
     image: gogs/gogs
+    expose:
+      - "3000"
+    ports:
+      - "10022:22"
     volumes:
       - /var/gogs:/data
