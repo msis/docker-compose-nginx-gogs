@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  web:
+    restart: always
+    image: nginx
+    ports:
+      - "8080:80"
+      - "443:443"
+    environment:
+      - NGINX_HOST=127.30.27.65
+      - NGINX_PORT=80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - git:git
+
+  git:
+    image: gogs/gogs
+    volumes:
+      - /var/gogs:/data
